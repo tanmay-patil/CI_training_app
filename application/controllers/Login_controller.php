@@ -80,6 +80,7 @@ class Login_controller extends CI_Controller {
 			}
 			else{
 				// Route the user back to login page
+				redirect('../Login_controller/loginFail');
 			}
 		}
 		
@@ -94,6 +95,14 @@ class Login_controller extends CI_Controller {
 		else{
 			return false;
 		}
+	}
+
+	public function loginFail(){
+		$data = array(
+			'failed_attempt' => true
+		);
+
+		$this->load->view('Login_view', $data);
 	}
 
 	public function setSessionData($data){

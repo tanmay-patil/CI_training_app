@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     width: 30em;
-    height: 18em;
+    height: 20em;
     margin-top: -9em;
     /*set to a negative number 1/2 of your height*/
     margin-left: -15em;
@@ -11,4 +11,20 @@
     border: 1px solid #ccc;
     background-color: #f3f3f3;
     padding: 10px;
+}
+
+.ci-error-color {
+    color: #b74242;
+}
+
+.ci-btn {
+    border: none;
+    padding: 5px;
+    width: 8em;
+    cursor: pointer;
+}
+
+.ci-btn-blue {
+    background: #3f77b3;
+    color: white;
 }

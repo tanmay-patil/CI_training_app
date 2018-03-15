@@ -11,6 +11,15 @@
 
 <body>
     <div id="login_form_container">
+
+        <?php
+            if(isset($failed_attempt)){
+                if($failed_attempt){
+                    echo "<h2 class='ci-error-color'>Login Failed</h1>";
+                }
+            }
+        ?>
+
         <form action='Login_controller/login' method='post'>
             <div class="form-group">
                 <label for="username">User Name / Email</label>
@@ -25,7 +34,7 @@
         <input class="form-check-input" type="checkbox"> Remember me
         </label>
             </div>
-            <button type="submit" name='submit' class="btn btn-primary">Submit</button>
+            <button type="submit" name='submit' class="ci-btn ci-btn-blue">Submit</button>
         </form>
     </div>
 </body>
