@@ -24,14 +24,29 @@ class Login_controller extends CI_Controller {
 		//use the line parent::__construct(); when you want a constructor in the child class to do something, AND execute the parent constructor
 		parent::__construct();
 		
-		$this->load->view('header/header');
+		$this->load->view('header/all_script_links');
 		$this->load->model('Login_model');
 	}
 
 	 public function index(){
 
-		$this->load->view('Login_view');
-	
+		// Check if user is already logged in
+		 if($this->isLoggedIn()){
+			// Check if not an admin
+            if($this->session->userdata("access_type") == 1){
+				redirect('../Admin_controller');
+			}
+			else if($this->session->userdata("access_type") == 2){
+				redirect('../User_controller');
+			}
+		}
+		else{
+			// If not logged in yet
+			$this->load->view('Login_view');
+			// Clear all previous session data if user forgot to logout
+			$this->session->sess_destroy();
+		}
+
 	}
 
 	public function login(){
@@ -47,14 +62,19 @@ class Login_controller extends CI_Controller {
 			// If auth succeeds
 			if($authenticationStatus != false){
 				$userType = $authenticationStatus["data"]->type;
+
+				/**** SET SESSION DATA ****/
+				$this->setSessionData($authenticationStatus["data"]);
+
 				// Check the access type of the user
 				if($userType == 1){	// Admin
 					// ADMIN USER
-					redirect('../Admin_controller/home');
+					// Redirect					
+					redirect('../Admin_controller');
 				}
 				else if($userType == 2){	// User
 					// NORMAL USER
-					redirect('../User_controller/home');
+					redirect('../User_controller');
 				}
 
 			}
@@ -74,5 +94,27 @@ class Login_controller extends CI_Controller {
 		else{
 			return false;
 		}
+	}
+
+	public function setSessionData($data){
+		$sessionData = array(
+		'username'  => $data->username,
+		'access_type'     => $data->type);
+
+		$this->session->set_userdata($sessionData);
+	}
+
+	public function isLoggedIn(){
+        if($this->session->userdata("access_type") != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+	}
+	
+	public function logout(){
+		// Destroy the session
+		$this->session->sess_destroy();
 	}
 }
