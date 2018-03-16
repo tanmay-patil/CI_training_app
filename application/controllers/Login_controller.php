@@ -34,10 +34,10 @@ class Login_controller extends CI_Controller {
 		 if($this->isLoggedIn()){
 			// Check if not an admin
             if($this->session->userdata("access_type") == 1){
-				redirect('../Admin_controller');
+				redirect('../'.ADMIN_CONTROLLER.'');
 			}
 			else if($this->session->userdata("access_type") == 2){
-				redirect('../User_controller');
+				redirect('../'.USER_CONTROLLER.'');
 			}
 		}
 		else{
@@ -70,11 +70,11 @@ class Login_controller extends CI_Controller {
 				if($userType == 1){	// Admin
 					// ADMIN USER
 					// Redirect					
-					redirect('../Admin_controller');
+					redirect('../'.ADMIN_CONTROLLER.'');
 				}
 				else if($userType == 2){	// User
 					// NORMAL USER
-					redirect('../User_controller');
+					redirect('../'.USER_CONTROLLER.'');
 				}
 
 			}

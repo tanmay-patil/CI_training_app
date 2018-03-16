@@ -17,19 +17,32 @@ class Admin_controller extends CI_Controller {
          if($this->isLoggedIn()){
 
             // Check if not an admin
-            if($this->session->userdata("access_type") == 1){
-                $this->load->view('admin/home_view');
+            if($this->isAdmin()){
+                redirect('../'.ADMIN_CONTROLLER.'/home');
             }
             else{
                 // Redirect to login page
-                redirect('../Login_controller');
+                redirect('../'.LOGIN_CONTROLLER.'');
             }
         }
         else{
             // Redirect to login page
-            redirect('../Login_controller');
+            redirect('../'.LOGIN_CONTROLLER.'');
         }
 
+    }
+
+    public function home(){
+        $this->load->view('admin/home_view');
+    }
+
+    public function isAdmin(){
+        if($this->session->userdata("access_type") == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public function isLoggedIn(){

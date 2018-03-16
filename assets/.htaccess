@@ -1,4 +1,4 @@
 Options -Indexes
 RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^http://localhost/CI_training/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://localhost/CI3_Login_Demo/.*$ [NC]
 RewriteRule ^.* /403-page [L,R]

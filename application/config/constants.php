@@ -84,8 +84,13 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-// DEFINING THE MAIN PROJECT NAME
-defined('PROJECT_NAME') OR define('PROJECT_NAME', 'CI_training');
+// PROJECT NAME CONSTANT
+defined('PROJECT_NAME') OR define('PROJECT_NAME', 'CI3_Login_Demo');
 
-// DEFINING CONSTANTS OF DATABASE TABLE NAMES TO BE USED IN QUERIES
+// DATABASE CONSTANTS
 defined('USERS') OR define('USERS', 'table_users');
+
+// CONTROLLER NAME CONSTANTS
+defined('LOGIN_CONTROLLER') OR define('LOGIN_CONTROLLER', 'Login_controller');
+defined('ADMIN_CONTROLLER') OR define('ADMIN_CONTROLLER', 'Admin_controller');
+defined('USER_CONTROLLER') OR define('USER_CONTROLLER', 'User_controller');
