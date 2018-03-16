@@ -1,5 +1,6 @@
 $(window).on('load', function() {
-    BASE_URL = window.location.origin + "/CI_training/";
+    PROJECT_NAME = "CI_training";
+    BASE_URL = window.location.origin + "/" + PROJECT_NAME + "/";
 });
 
 function logout() {

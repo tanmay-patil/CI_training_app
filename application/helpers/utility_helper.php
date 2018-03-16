@@ -1,11 +1,11 @@
 <?php
 
 function asset_url(){
-   return base_url().'assets/';
+   return "http://".$_SERVER['HTTP_HOST']."/".PROJECT_NAME."/assets/";
 }
 
 function controller_url(){
-   return "http://".$_SERVER['HTTP_HOST']."/"."CI_training/";
+   return "http://".$_SERVER['HTTP_HOST']."/".PROJECT_NAME."/";
 }
 
 ?>

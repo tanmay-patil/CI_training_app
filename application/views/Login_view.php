@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
-     <link rel="stylesheet" href="<?php echo base_url('assets/css/login.css'); ?>">
+     <link rel="stylesheet" href="<?php echo asset_url().'css/login.css'; ?>">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
             }
         ?>
 
-        <form action='Login_controller/login' method='post'>
+        <form action='<?php echo controller_url()."Login_controller/login";?>' method='post'>
             <div class="form-group">
                 <label for="username">User Name / Email</label>
                 <input name="username" type="username" class="form-control" id="username">
